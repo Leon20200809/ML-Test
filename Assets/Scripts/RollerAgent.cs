@@ -63,11 +63,22 @@ public class RollerAgent : Agent
     /// <param name="vectorAction"></param>
     public override void OnActionReceived(float[] vectorAction)
     {
-        //RollerAgentに力を加える（進ませる）
+        //Continuous_RollerAgentに力を加える（進ませる）
+        /*
         Vector3 controlSignal = Vector3.zero;
         controlSignal.x = vectorAction[0];
         controlSignal.z = vectorAction[1];
         rb.AddForce(controlSignal * 10);
+        */
+
+        //Discrete_RollerAgentに力を加える（進ませる）
+        Vector3 controlSignal = Vector3.zero;
+        int action = (int)vectorAction[0];
+        if (action == 1) controlSignal.z = 1.0f;
+        if (action == 2) controlSignal.z = -1.0f;
+        if (action == 3) controlSignal.x = -1.0f;
+        if (action == 4) controlSignal.x = 1.0f;
+        rb.AddForce(controlSignal * 5);
 
         //RollerAgentがTargetに到着した時
         float distanceToTarget = Vector3.Distance(this.transform.position, target.position);
@@ -112,8 +123,19 @@ public class RollerAgent : Agent
     /// <param name="actionsOut"></param>
     public override void Heuristic(float[] actionsOut)
     {
+        //Continuous_
+        /*
         actionsOut[0] = Input.GetAxis("Horizontal");
         actionsOut[1] = Input.GetAxis("Vertical");
+        */
+
+        //Discrete_
+        actionsOut[0] = 0;
+        if (Input.GetKey(KeyCode.UpArrow)) actionsOut[0] = 1;
+        if (Input.GetKey(KeyCode.DownArrow)) actionsOut[0] = 2;
+        if (Input.GetKey(KeyCode.LeftArrow)) actionsOut[0] = 3;
+        if (Input.GetKey(KeyCode.RightArrow)) actionsOut[0] = 4;
+
     }
 
 

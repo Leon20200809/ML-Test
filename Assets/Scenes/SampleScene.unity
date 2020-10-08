@@ -532,10 +532,10 @@ MonoBehaviour:
   m_BrainParameters:
     VectorObservationSize: 8
     NumStackedVectorObservations: 1
-    VectorActionSize: 02000000
+    VectorActionSize: 05000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: 58950372dc259c846980b8f9db1d32ce, type: 3}
+    VectorActionSpaceType: 0
+  m_Model: {fileID: 5022602860645237092, guid: 5a81a07a18a43144cbca51a13e34b5b8, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: RollerBall
